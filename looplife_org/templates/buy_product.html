@@ -1,0 +1,72 @@
+<!-- buy_products.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .list-group-item {
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Buy Products</h1>
+
+        <p>Your Reward Points: {{ user.points }}</p>
+        
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item">
+                    <h2>{{ product.name }}</h2>
+                    <p>Description: {{ product.description }}</p>
+                    <p>Original Price: ${{ product.price }}</p>
+                    <p>Adjusted Price (after using points): ${{ product.price - user.points }}</p>
+                    <form method="GET" action="{{ url_for('user_buy_product', product_id=product.product_id) }}">
+                        <a href="{{ url_for('user_buy_products') }}" class="btn btn-success btn-block" onclick="showNotification()">Buy Products</a>
+
+                        <!-- JavaScript for displaying the notification -->
+                        <script>
+                            function showNotification() {
+                                alert('Product purchased successfully!');
+                            }
+                        </script>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary btn-block mt-3">Back to Dashboard</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

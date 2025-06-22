@@ -1,0 +1,24 @@
+<!-- admin_dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Welcome, Admin!</h2>
+    <p class="lead">Manage Users and Waste Submissions</p>
+
+    <a href="{{ url_for('admin_update_page') }}" class="btn btn-primary mb-3">Update Weights and Rewards</a>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Users</h3>
+            <ul class="list-group">
+                {% for user in users %}
+                    <li class="list-group-item">{{ user.username }} - Points: {{ user.points }} - Weight: {{ user.weight }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+       
+    </div>
+  </div>
+{% endblock %}

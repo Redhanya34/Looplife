@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(85, 207, 79);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: rgba(153, 149, 149, 0.727);
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: #007bff;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-bar span {
+            padding: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center mb-4">LoopLife</h1>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+
+                <!-- Progress bar for weight of waste submitted -->
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: {{ user.weight_percent }}%;" aria-valuenow="{{ user.weight_percent }}" aria-valuemin="0" aria-valuemax="100">
+                        <span>{{ user.weight }} kg</span>
+                    </div>
+                </div>
+        
+                <p><strong>W-Credits</strong></p>
+        
+                <!-- Progress bar for reward points -->
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{ user.points_percent }}%;" aria-valuenow="{{ user.points_percent }}" aria-valuemin="0" aria-valuemax="100">
+                        <span>{{ user.points }} points</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Link to Sell a Product page -->
+        <a href="{{ url_for('user_sell_product') }}" class="btn btn-primary btn-block">Sell a Product</a>
+
+        <!-- Link to Buy Products page -->
+        <a href="{{ url_for('user_buy_products') }}" class="btn btn-success btn-block">Buy Products</a>
+
+        <!-- Logout button -->
+        <a href="{{ url_for('logout') }}" class="btn btn-danger btn-block logout-btn">Logout</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

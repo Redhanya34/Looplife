@@ -1,0 +1,73 @@
+<!-- sell_product.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell a Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Sell a Product</h1>
+
+        <form method="POST" action="{{ url_for('user_sell_product') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Product Name:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" name="description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Product Image:</label>
+                <input type="file" class="form-control-file" name="image" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="btn btn-block">Submit</button>
+        </form>
+
+        <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary btn-block mt-3">Back to Dashboard</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

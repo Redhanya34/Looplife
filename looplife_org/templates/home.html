@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoopLife - Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/waste2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container-fluid {
+            padding: 20px;
+        }
+        .jumbotron {
+            background-color: #1515155c;
+            color: #030701;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 0;
+        }
+        h1 {
+            font-size: 3.5rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .btn-primary {
+            background-color: #207e4b;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #00b32d;
+        }
+    
+        .image-container {
+            margin-top: -70px;
+            margin-right: -110px;
+        }
+        .image-container img {
+         
+            height: auto;
+            width: 70px; /* Set the width of the image */
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Welcome to LoopLife</h1>
+        <div class="container image-container">
+            <img src="static\images\recycle.png" alt="Your Image">
+        </div>
+        <p>Join us in our mission for environmental sustainability</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Get Started</a>
+        <!-- <div class="container image-container">
+            <img src="static\images\recycle1.png" alt="Your Image">
+        </div> -->
+    </div>
+</body>
+</html>

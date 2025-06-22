@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Update Weights and Rewards</h2>
+    
+    <form method="post" action="{{ url_for('admin_update_weights_and_rewards') }}" class="mb-4">
+      <div class="form-group">
+          <label for="customer_name">Customer Name:</label>
+          <input type="text" class="form-control" name="customer_name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Get Details</button>
+  </form>
+  
+
+    {% if user_details %}
+      <h3>{{ user_details.username }} Details</h3>
+      <p>Points: {{ user_details.points }}</p>
+      <p>Weight: {{ user_details.weight }}</p>
+
+      <form method="post" action="{{ url_for('admin_update_weights_and_rewards') }}">
+        <div class="form-group">
+          <label for="weight">New Weight:</label>
+          <input type="text" class="form-control" name="weight" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Weight</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
